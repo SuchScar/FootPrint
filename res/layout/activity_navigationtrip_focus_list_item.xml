@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+       <ImageView 
+           android:id="@+id/focus_image"
+           android:layout_width="120dp"
+           android:layout_height="90dp"
+           android:layout_marginTop="8dp"
+           android:layout_marginBottom="8dp"
+           android:src="@drawable/aa"/>
+
+		<TextView
+		    android:id="@+id/focus_title"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignTop="@+id/focus_image"
+		    android:layout_toRightOf="@+id/focus_image"
+		    android:layout_marginTop="3dp"
+		    android:layout_marginLeft="8dp"
+		    android:layout_marginRight="10dp"
+		    android:ellipsize="end"
+		    android:singleLine="true"
+		    android:text="宁波工程学院逸夫楼"
+		    android:textSize="18sp" />
+		
+
+		<TextView
+		    android:id="@+id/plan_brief"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_alignLeft="@+id/focus_title"
+		    android:layout_below="@+id/focus_title"
+		    android:layout_marginRight="20dp"
+			android:ellipsize="end"
+		    android:lines="2"
+		    android:textColor="@color/textgray"
+		    android:textSize="12sp"
+		    android:text="宁波以“书藏古今，港通天下”为口号。宁波历史悠久，是具有7000多年文明史的“河姆渡文化”发祥地。唐代，宁波成为“海上丝绸之路”的起点之一，与扬州、广州并称为中国三大对外贸易港口。" 
+		    />
+
+		<LinearLayout 
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		     android:layout_alignLeft="@+id/plan_brief"
+		    android:layout_marginRight="10dp"
+		    android:layout_below="@+id/plan_brief"
+		    android:orientation="vertical"
+		    >
+		<LinearLayout
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content" 
+		    >
+
+		    <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="由" />
+
+		    <TextView
+		        android:id="@+id/participantname"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="魅力"
+		        android:textColor="@color/orange" />
+
+		    <TextView
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="负责" />
+		</LinearLayout>
+
+		<TextView
+		    android:id="@+id/plan_time"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:text="2016/01/02" />
+
+		</LinearLayout>
+		
+		
+           
+    </RelativeLayout>
+
+</LinearLayout>

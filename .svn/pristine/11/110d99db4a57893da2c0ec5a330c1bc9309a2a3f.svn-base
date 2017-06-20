@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/backgroundgray" >
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#ffffff"
+        >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center_vertical" >
+
+        <ImageView
+            android:id="@+id/back_image"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/back_orange" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="@string/checkprint"
+            android:textStyle="bold"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/report_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:layout_alignParentRight="true"
+            android:text="@string/report"
+            android:textColor="@color/orange"
+            android:textSize="18sp" />
+
+    </RelativeLayout>
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/linegray"/>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="95dp">
+        <EditText 
+        android:id="@+id/checkinfo"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:textSize="15sp"
+        android:hint="@string/writesomething"/>
+    </LinearLayout>
+    <GridView 
+        android:id="@+id/noScrollgridview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:horizontalSpacing="3dp"        
+        android:numColumns="4"
+        android:scrollbars="none"
+        android:verticalSpacing="5dp" >
+    </GridView>
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@color/linegray"
+        android:layout_marginLeft="15dp"/>
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <ImageView 
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_gravity="center_vertical"
+            android:background="@drawable/location"/>
+     <TextView 
+        android:id="@+id/nowpoint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="@string/nowaddress"
+        android:textSize="17sp"/>
+     </LinearLayout>
+    
+
+    </LinearLayout>
+</LinearLayout>

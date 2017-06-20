@@ -1,0 +1,44 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <style name="spinner_textsize">
+        <item name="android:textSize">15sp</item>
+    </style>
+    
+    	<style name="roomRatingBar" parent="@android:style/Widget.RatingBar">
+		<item name="android:progressDrawable">@drawable/room_rating_bar</item>
+		<item name="android:minHeight">13dp</item>
+		<item name="android:maxHeight">13dp</item>
+		<item name="android:spacing">30dp</item>
+	</style>
+    
+    	<style name="broomRatingBar" parent="@android:style/Widget.RatingBar">
+		<item name="android:progressDrawable">@drawable/broom_rating_bar</item>
+		<item name="android:minHeight">20dp</item>
+		<item name="android:maxHeight">20dp</item>
+		<item name="android:spacing">30dp</item>
+	</style>
+	<style name="AnimHead" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/in</item>
+        <item name="android:windowExitAnimation">@anim/out</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        
+    </style>
+    
+</resources>

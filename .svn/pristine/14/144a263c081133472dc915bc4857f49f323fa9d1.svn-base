@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+  <LinearLayout 
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="15dp"
+      android:orientation="vertical">
+    <RelativeLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        
+        >
+        <com.Tool.CircleImageView 
+            android:id="@+id/userimage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/head"
+            app:border_color="#ffffff"/>
+
+        <TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/userimage"
+            android:layout_marginLeft="5dp"
+            android:text="老李" />
+
+        <TextView
+            android:id="@+id/commemttime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:text="2016/06/08" />
+
+        <RatingBar
+            android:id="@+id/tripcommentrank"
+            style="@style/roomRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/username"
+            android:layout_marginTop="18dp"
+            android:numStars="5"
+            android:rating="3" />
+        
+    </RelativeLayout>  
+    
+    <TextView 
+        android:id="@+id/commemt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:text="cv b"/>
+      
+      
+      
+      
+  </LinearLayout>
+
+</LinearLayout>

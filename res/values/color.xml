@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <color name="linegray">#dadada</color>
+    <color name="textgray">#666460</color>
+    <color name="orange">#FF9D00</color>
+    <color name="backgroundgray">#eaeaea</color>
+
+</resources>

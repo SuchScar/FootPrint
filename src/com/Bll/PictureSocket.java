@@ -1,0 +1,124 @@
+package com.Bll;
+
+import java.net.InetSocketAddress;
+import java.util.concurrent.Executors;
+
+import org.apache.mina.core.future.ConnectFuture;
+import org.apache.mina.core.service.IoConnector;
+import org.apache.mina.core.session.IdleStatus;
+import org.apache.mina.core.session.IoSession;
+import org.apache.mina.filter.codec.ProtocolCodecFilter;
+import org.apache.mina.filter.executor.ExecutorFilter;
+import org.apache.mina.filter.keepalive.KeepAliveFilter;
+import org.apache.mina.filter.keepalive.KeepAliveMessageFactory;
+import org.apache.mina.filter.keepalive.KeepAliveRequestTimeoutHandler;
+import org.apache.mina.transport.socket.nio.NioSocketConnector;
+
+import com.Factory.MyProtocalCodecFactory;
+import com.KeepAlive.ClientKeepAliveImp;
+
+public class PictureSocket {
+	
+	private static String HOST = "192.168.0.198";
+	//private static String HOST = "120.24.49.3";
+
+	private static int PORT = 3387;
+	//private static int PORT = 59102;
+	
+	private static int HEARTBEATRATE = 10;
+	
+	private static IoSession session;
+
+	private static boolean result;
+	
+	public static void connect(){           //创建连接
+		
+		// 创建一个非阻塞的客户端程序
+		IoConnector connector = new NioSocketConnector();
+		// 设置链接超时时间
+		connector.setConnectTimeout(30000);
+//		ObjectSerializationCodecFactory factory = new ObjectSerializationCodecFactory();   
+//        //设定传输最大值   
+//        factory.setDecoderMaxObjectSize(Integer.MAX_VALUE);// 设定后服务器可以接收大数据   
+//        factory.setEncoderMaxObjectSize(Integer.MAX_VALUE); 
+		
+		// 添加过滤器
+		connector.getFilterChain().addLast(
+				"codec",
+				new ProtocolCodecFilter(new MyProtocalCodecFactory("utf-8")));
+		KeepAliveMessageFactory heartBeatFactory = new ClientKeepAliveImp();        //实现类,满足心跳机制
+		//KeepAliveRequestTimeoutHandler设置为CLOS表明，当发出的心跳请求在规定时间内没有接受到反馈的时候则调用CLOSE方式 关闭连接 
+		KeepAliveFilter kaf = new KeepAliveFilter(heartBeatFactory, IdleStatus.BOTH_IDLE,KeepAliveRequestTimeoutHandler.CLOSE);
+
+		 // 是否回发 ,当session进入idle状态的时候 依然调用handler中的idled方法
+			kaf.setForwardEvent(true);
+	        // 发送频率 ,每10秒发出一个心跳请求  否则该连接进入空闲状态 并且发出idled方法回调
+			kaf.setRequestInterval(HEARTBEATRATE);
+			kaf.setRequestTimeout(10);    //超时
+			connector.getFilterChain().addLast("heartbeat", kaf);       //将过滤器加入到整个过滤链中
+		
+		connector.getFilterChain().addLast("threadPool", new ExecutorFilter(Executors.newCachedThreadPool()));
+
+		// 添加业务逻辑处理器类
+		connector.setHandler(new PictureHander());
+		try {
+			ConnectFuture future = connector.connect(new InetSocketAddress(
+					HOST, PORT));// 创建连接
+			future.awaitUninterruptibly();// 等待连接创建完成
+			if(future.isConnected()){
+			session = future.getSession();// 获得session
+			result=true;
+			
+			//session.write("bye");// 发送消息
+//			try {
+//				JSONObject json= new JSONObject();
+//				json.put("tag",1);
+//				json.put("page", 1);
+//				//MinaSocket.SendMessage(json);
+//				session.write(json.toString());
+//			} catch (Exception e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+			
+//			if(!SPUtils.get(context,"userAccount", "").equals("")){
+//			if(!SPUtils.get(context,"userPassword", "").equals("")){
+//				JSONObject json=new JSONObject();
+//				json=new UserEntity().ToJSON(11,SPUtils.get(context,"userAccount", "").toString(), SPUtils.get(context,"userPassword", "").toString());
+//				try {
+//					MinaSocket.SendMessage(json);
+//				} catch (Exception e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//			}
+//		}
+			
+			
+//			session.getCloseFuture().awaitUninterruptibly();// 等待连接断开
+//			connector.dispose();
+
+			}else{
+				result=false;
+			}
+		} catch (Exception e) {
+			System.out.println("客户端链接异常..."+e);
+		}
+
+		
+			session.getCloseFuture().awaitUninterruptibly();// 等待连接断开
+			connector.dispose();
+		
+		
+	}
+	
+	//发送信息
+	public static void SendMessage(Object message) throws Exception {
+        session.write(message);
+    }
+	//判断session是否为空
+	public static  boolean isTrue(){
+		return result;  
+    }
+
+    }

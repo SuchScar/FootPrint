@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <resources>
+    <string-array name="spingarr">
+     <item>关注点</item>  
+    <item>行程</item>   
+    </string-array>
+</resources>
